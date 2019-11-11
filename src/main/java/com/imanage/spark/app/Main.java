@@ -1,7 +1,6 @@
 package com.imanage.spark.app;
 
 import com.imanage.spark.api.Hello;
-import spark.Spark;
 
 import static spark.Spark.*;
 
