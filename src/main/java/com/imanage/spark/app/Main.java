@@ -1,6 +1,6 @@
 package com.imanage.spark.app;
 
-import com.imanage.spark.api.Hello;
+import com.imanage.spark.api.SparkAPIServer;
 
 import static spark.Spark.*;
 
@@ -9,7 +9,7 @@ public class Main {
         port(8080);
         init();
         awaitInitialization();
-        Hello hello=new Hello();
-        hello.hello();
+        SparkAPIServer sparkAPIServer=new SparkAPIServer();
+        sparkAPIServer.api();
     }
 }
