@@ -1,9 +1,7 @@
 package com.imanage.spark.api;
 
-import com.imanage.spark.data.Message;
 import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
-
+import org.junit.Test;
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 

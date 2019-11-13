@@ -6,7 +6,7 @@ import com.despegar.http.client.HttpResponse;
 import com.despegar.http.client.PostMethod;
 import com.despegar.sparkjava.test.SparkServer;
 import org.junit.ClassRule;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import spark.servlet.SparkApplication;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
@@ -14,14 +14,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SparkAPIServerIT {
 
+
     public static class SparkAPIServerTestApp implements SparkApplication{
+        @Override
         public void init(){
             new SparkAPIServer().api();
         }
     }
 
     @ClassRule
-    public static SparkServer<SparkAPIServerTestApp> testServer = new SparkServer<>(SparkAPIServerTestApp.class, 8080);
+    public static SparkServer<SparkAPIServerTestApp> testServer = new SparkServer<>(SparkAPIServerTestApp.class);
 
     @Test
     public void serverRespondsSuccessfully() throws HttpClientException {
@@ -73,9 +75,10 @@ public class SparkAPIServerIT {
                 () -> assertEquals(200, httpResponse.code()),
                 () -> assertEquals(responseBody.getBytes().length,httpResponse.body().length)
         );
+        testGetExistingMessage();
     }
 
-    @Test
+
     public void testGetExistingMessage() throws HttpClientException {
         String requestParam="1";
         String responseBody="{\"id\":1,\"text\":\"this is the text of the message\",\"from\":\"dave\",\"to\":\"jagadeesh\"}";
@@ -97,4 +100,6 @@ public class SparkAPIServerIT {
                 () -> assertEquals("Message not found".getBytes().length,httpResponse.body().length)
         );
     }
+
+
 }
