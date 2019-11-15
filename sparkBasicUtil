@@ -1,5 +1,0 @@
-#!/bin/bash
-SCRIPT_NAME=`basename $0`
-HOST=`hostname`
-
-java -jar target/spark-hello-world-1.0-SNAPSHOT-jar-with-dependencies.jar "$@"

@@ -1,4 +1,4 @@
-package com.imanage.spark.data;
+package spark.data;
 
 import java.util.Objects;
 

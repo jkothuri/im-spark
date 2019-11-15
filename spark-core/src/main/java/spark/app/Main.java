@@ -1,6 +1,6 @@
-package com.imanage.spark.app;
+package spark.app;
 
-import com.imanage.spark.api.SparkAPIServer;
+import spark.api.SparkAPIServer;
 
 import static spark.Spark.*;
 

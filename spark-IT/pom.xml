@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+    <artifactId>spark-hello-world</artifactId>
+    <groupId>imanageSpark</groupId>
+    <version>1.0-SNAPSHOT</version>
+</parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>spark-IT</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>imanageSpark</groupId>
+            <artifactId>spark-core</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+    <plugin>
+        <groupId>io.fabric8</groupId>
+        <artifactId>docker-maven-plugin</artifactId>
+        <version>0.20.1</version>
+        <executions>
+            <execution>
+                <id>prepareIT</id>
+                <goals>
+                    <goal>start</goal>
+                </goals>
+            </execution>
+            <execution>
+                <id>completeIT</id>
+                <goals>
+                   <goal>stop</goal>
+                </goals>
+            </execution>
+        </executions>
+        <configuration>
+            <images>
+                <image>
+                    <name>spark-core</name>
+                    <alias>sparkcore</alias>
+                    <run>
+                        <ports>
+                            <port>8080:8080</port>
+                        </ports>
+                        <wait>
+                            <time>10000</time>
+                        </wait>
+                    </run>
+                </image>
+            </images>
+        </configuration>
+    </plugin>
+
+            <plugin>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>2.22.2</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <!--
+                            <goal>verify</goal>
+                            -->
+                        </goals>
+                        <configuration>
+                            <excludes>
+                                <exclude>**/*Test.java</exclude>
+                            </excludes>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+</plugins>
+        </build>
+        </project>

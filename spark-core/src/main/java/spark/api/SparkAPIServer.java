@@ -1,8 +1,8 @@
-package com.imanage.spark.api;
+package spark.api;
 
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
-import com.imanage.spark.data.Message;
+import spark.data.Message;
 
 import java.io.StringReader;
 import java.util.Map;

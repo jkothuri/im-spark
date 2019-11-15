@@ -6,13 +6,14 @@ import com.despegar.http.client.HttpResponse;
 import com.despegar.http.client.PostMethod;
 import com.despegar.sparkjava.test.SparkServer;
 import org.junit.ClassRule;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import spark.api.SparkAPIServer;
 import spark.servlet.SparkApplication;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class SparkAPIServerIT {
+public class SparkAPIServerRemoteIT {
 
 
     public static class SparkAPIServerTestApp implements SparkApplication{
@@ -23,7 +24,7 @@ public class SparkAPIServerIT {
     }
 
     @ClassRule
-    public static SparkServer<SparkAPIServerTestApp> testServer = new SparkServer<>(SparkAPIServerTestApp.class);
+    public static SparkServer<SparkAPIServerTestApp> testServer = new SparkServer<>(SparkAPIServerTestApp.class,8080);
 
     @Test
     public void serverRespondsSuccessfully() throws HttpClientException {
